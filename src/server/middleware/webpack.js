@@ -2,7 +2,7 @@ import devMiddleware from 'webpack-dev-middleware';
 import hotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 
-import config from '../../../webpack.config';
+import config from '../../../webpack.config.babel';
 
 const compiler = webpack(config);
 

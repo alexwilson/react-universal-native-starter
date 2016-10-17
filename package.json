@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "build": "webpack -c --progress",
+    "lint": "eslint --ignore-path .gitignore .",
+    "prebuild": "rimraf build/*",
+    "prestart": "npm run build",
     "start": "forever index.js",
     "start-dev": "nodemon index -w src/server",
     "start-native": "node node_modules/react-native/local-cli/cli.js start",
@@ -43,6 +47,7 @@
     "jest": "16.0.1",
     "jest-react-native": "16.0.0",
     "nodemon": "^1.11.0",
-    "react-test-renderer": "15.3.2"
+    "react-test-renderer": "15.3.2",
+    "rimraf": "^2.5.4"
   }
 }
