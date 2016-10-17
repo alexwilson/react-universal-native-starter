@@ -19,5 +19,5 @@ server.use(express.static(path.resolve(__dirname, '../build')));
 server.use(reactMiddleware);
 
 server.listen(config.server.port, () => {
-  console.log(`Listening on ${config.server.port}`);
+  console.log(`Listening on ${config.server.port} in ${config.env} mode`);
 });
