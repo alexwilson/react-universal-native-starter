@@ -15,9 +15,11 @@ if (!isProduction) {
 }
 
 server.use(morgan(isProduction ? 'combined' : 'dev'));
-server.use(express.static(path.resolve(__dirname, '../build')));
+server.use(express.static(path.resolve(__dirname, '../build'), {
+  maxAge: "200d"
+}));
 server.use(reactMiddleware);
 
 server.listen(config.server.port, () => {
-  console.log(`Listening on ${config.server.port} in ${config.env} mode`);
+  console.log(`🚀 Listening on ${config.server.port} in ${config.env} mode`);
 });

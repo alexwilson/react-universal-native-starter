@@ -7,10 +7,10 @@
     "lint": "eslint --ignore-path .gitignore .",
     "prebuild": "rimraf build/*",
     "prestart": "npm run build",
-    "start": "forever index.js",
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 index.js",
     "start-dev": "nodemon index -w src/server",
     "start-native": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "assets-webpack-plugin": "^3.4.0",
