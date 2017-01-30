@@ -23,6 +23,12 @@ export default {
     'react-hot-loader/patch',
     './index.js'
   ],
+  resolve: {
+    alias: {
+      warning: 'warning/browser.js',
+      invariant: 'invariant/browser.js'
+    }
+  },
   context: path.resolve(__dirname, './src/client'),
   output: {
     filename: '[name].[hash:7].js',
