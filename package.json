@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "webpack -c --progress",
+    "build": "NODE_ENV=${NODE_ENV:=production} webpack -c --progress",
     "lint": "eslint --ignore-path .gitignore .",
     "prebuild": "rimraf build/*",
     "prestart": "npm run build",
-    "start": "forever --minUptime 1000 --spinSleepTime 1000 index.js",
+    "start": "npm run start-prod",
+    "start-prod": "NODE_ENV=${NODE_ENV:=production} forever --minUptime 1000 --spinSleepTime 1000 index.js",
     "start-dev": "nodemon index -w src/server",
     "start-native": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest --coverage"

@@ -12,8 +12,10 @@ const isProduction = config.env === 'production';
 
 let postCssConf = '!postcss?browsers=last 2 versions';
 let cssLoaderConf = '?modules&importLoaders=1&localIdentName=[name]__[local]-[hash:base64:4]';
-let cssLoaders = `css${cssLoaderConf}${postCssConf}`;
+let cssLoaders = `style!css${cssLoaderConf}${postCssConf}`;
 let scssLoaders = `${cssLoaders}!sass`;
+
+const extractForProduction = loaders => isProduction ? ExtractTextPlugin.extract('style', loaders.substr(loaders.indexOf('!'))) : loaders
 
 export default {
   entry: isProduction ? [
@@ -40,12 +42,12 @@ export default {
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', cssLoaders)
+        loader: extractForProduction(cssLoaders)
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', scssLoaders)
+        loader: extractForProduction(scssLoaders)
       },
       {
         test: /\.js$/,
